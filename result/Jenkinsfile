@@ -4,7 +4,7 @@ pipeline {
   stages {
     stage(build) {
       when {
-	changeset "**/result/**"
+	      changeset "**/result/**"
       }
 
       agent {
@@ -15,16 +15,16 @@ pipeline {
       }
 
       steps {
-	echo 'Compiling result app...'
-	dir('result') {
-	  sh 'npm install'
-	}
+	      echo 'Compiling result app...'
+	      dir('result') {
+	        sh 'npm install'
+	      }
       }
     }
 
     stage(test) {
       when {
-	changeset "**/result/**"
+	      changeset "**/result/**"
       }
 
       agent {
@@ -33,13 +33,13 @@ pipeline {
           args '-v $HOME/node_modules/root/node_modules'
         }
       }
-
+      
       steps {
-	echo 'Running Unit Tests on result app...'
-	dir('result') {
-	  sh 'npm install'
-	  sh 'npm test'
-	}
+	      echo 'Running Unit Tests on result app...'
+	      dir('result') {
+          sh 'npm install'
+          sh 'npm test'
+	      }
       }
     }
 
