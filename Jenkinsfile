@@ -7,7 +7,7 @@ pipeline {
     stage('worker-build') {
       agent {
         docker {
-          image 'maven:3.8.5-jdk-11-slim'
+          image 'maven:3.6.1-jdk-8-slim'
           args '-v $HOME/.m2:/root/.m2'
         }
 
@@ -27,7 +27,7 @@ pipeline {
     stage('worker test') {
       agent {
         docker {
-          image 'maven:3.8.5-jdk-11-slim'
+          image 'maven:3.6.1-jdk-8-slim'
           args '-v $HOME/.m2:/root/.m2'
         }
 
@@ -47,7 +47,7 @@ pipeline {
     stage('worker-package') {
       agent {
         docker {
-          image 'maven:3.8.5-jdk-11-slim'
+          image 'maven:3.6.1-jdk-8-slim'
           args '-v $HOME/.m2:/root/.m2'
         }
 
@@ -89,7 +89,7 @@ pipeline {
     stage('result-build') {
       agent {
         docker {
-          image 'node:8.16.0-alpine'
+          image 'node:19.0.1-alpine'
         }
 
       }
@@ -108,7 +108,7 @@ pipeline {
     stage('result-test') {
       agent {
         docker {
-          image 'node:8.16.0-alpine'
+          image 'node:19.0.1-alpine'
         }
 
       }
@@ -147,7 +147,7 @@ pipeline {
     stage('vote-build') {
       agent {
         docker {
-          image 'python:2.7.16-slim'
+          image 'python'
           args '--user root'
         }
 
@@ -167,7 +167,7 @@ pipeline {
     stage('vote-test') {
       agent {
         docker {
-          image 'python:2.7.16-slim'
+          image 'python'
           args '--user root'
         }
 
